@@ -1,0 +1,1 @@
+This is the code for a board game intended to run on Meebo's third party development platform.
