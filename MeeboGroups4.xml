@@ -1,0 +1,72 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="hello world example" title_url="http://www.meebo.com/" description="Meebo Groups Displayer" author="Jeremy Glassenberg" author_email="GoogleGadgets@jeremyglassenberg.com" screenshot="http://www.jeremyglassenberg.com/meebo.jpg" thumbnail="http://www.jeremyglassenberg.com/meebo.jpg" width="550" height="455">
+  
+<Require feature="setprefs"/>  </ModulePrefs>
+<Content type="html"><![CDATA[
+    
+    <script>
+    function loadChat(){
+   
+      
+    var prefs = new _IG_Prefs(); 
+    prefs.set("firstGroup", document.getElementById("groupID").value);    
+    //prefs.getString("firstGroup"); 
+      //alert(prefs.getArray("tom"));
+      var groupsList;
+      var groupNames;
+      if (prefs.getArray("groups") ==""){
+        groupsList = new Array();
+        groupNames = new Array();
+      }
+      else {
+        groupsList = prefs.getArray("groups");
+        groupNames = prefs.getArray("names");
+      }
+      groupsList[groupsList.length] = document.getElementById("groupID").value;
+      prefs.setArray("groups", groupsList);
+      groupNames[groupNames.length] = document.getElementById("groupName").value;
+      prefs.setArray("names", groupNames);
+      
+ 
+      
+      var mySel = document.getElementById("groupList");
+     // alert(mySel);
+     // alert(mySel.options);
+      for (var i = 0; i < groupsList.length; i++){
+       // alert(mySel.options[i]);
+        mySel.options[i] = new Option(groupNames[i],groupsList[i],false,false);;
+      //alert(mySel.options[i]);
+       // mySel.options[i].value = groupsList[i];
+      }
+  
+      var groupID = prefs.getString("firstGroup");
+  //var groupID = document.getElementById(prefs).value;
+      var wantMedia = document.getElementById("media").checked;
+      
+      if (wantMedia){
+        document.getElementById("chatRoom").innerHTML = '<div style="width:550px"><style>.mcrmeebo { display: block; background:url("http://widget.meebo.com/r.gif") no-repeat top right; } .mcrmeebo:hover { background:url("http://widget.meebo.com/ro.gif") no-repeat top right; } </style><embed src="http://widget.meebo.com/mcr.swf?id='+groupID+'" type="application/x-shockwave-flash" width="550" height="415" /><a href="http://www.meebo.com/rooms" class="mcrmeebo"><img alt="http://www.meebo.com/rooms" src="http://widget.meebo.com/b.gif" width="550" height="45" style="border:0px"/></a></div>';
+      }
+      else {
+        document.getElementById("chatRoom").innerHTML = '<div style="width:430px"><style>.mcrmeebo { display: block; background:url("http://widget.meebo.com/r.gif") no-repeat top right; } .mcrmeebo:hover { background:url("http://widget.meebo.com/ro.gif") no-repeat top right; } </style><embed src="http://widget.meebo.com/mcr.swf?id='+groupID+'" type="application/x-shockwave-flash" width="430" height="300" /><a href="http://www.meebo.com/rooms" class="mcrmeebo"><img alt="http://www.meebo.com/rooms" src="http://widget.meebo.com/b.gif" width="430" height="45" style="border:0px"/></a></div>';
+      }
+    }
+    </script>
+      
+      <form>
+  GroupID: <input type="text" name="groupID" id="groupID" value="knNPBpWJzP"> <a href="help.html" target="_blank">?</a>
+  Name: <input type="text" name="groupName" id="groupName" value="Mozilla">
+    Include media player<input type="checkbox" name="media" id="media" value="yes" checked>  
+   <a onClick="loadChat()">Go</a> 
+ </form>
+ <br>
+   
+<SELECT NAME="groupList" id="groupList">  
+  
+<OPTION VALUE="/tags/" >      </Select> 
+ <span id="chatRoom"></span>
+<!-- without media player -->
+
+]]></Content>
+</Module>
