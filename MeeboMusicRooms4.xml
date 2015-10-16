@@ -1,0 +1,10 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="Meebo Music Groups" title_url="http://www.meebo.com/" description="Meebo Groups Displayer" author="Jeremy Glassenberg" author_email="GoogleGadgets@jeremyglassenberg.com" screenshot="http://www.jeremyglassenberg.com/meebo.jpg" thumbnail="http://www.jeremyglassenberg.com/meebo.jpg" width="550" height="405" scaling="false" >
+ 
+  </ModulePrefs>
+  
+ <Content type="url" href="http://www.jeremyglassenberg.com/MeeboMusicRoomsTest.html"></Content>
+</Module>
+
